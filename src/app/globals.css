@@ -47,3 +47,247 @@ body {
   border-radius: 4px;
   border: 2px solid #090909;
 }
+
+/* Toolbar button styles */
+.top-tool-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6); /* Gray similar to placeholder */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  position: relative;
+  /* Prevent text selection on mobile */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Prevent touch callout on iOS */
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .top-tool-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.top-tool-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  background: rgba(28, 28, 28, 0.9);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 50;
+}
+
+/* Desktop hover behavior */
+@media (hover: hover) and (pointer: fine) {
+  .top-tool-button:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Mobile long press behavior */
+.top-tool-button.mobile-tooltip-active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.send-button {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  background: #bfc0c2;
+  color: #000000;
+  border: 1px solid #8c8d8f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  position: relative;
+  /* Prevent text selection on mobile */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Prevent touch callout on iOS */
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .send-button:hover {
+    background: #d0d1d3;
+    border-color: #8c8d8f;
+    color: #000000;
+  }
+}
+
+.send-button:active {
+  transform: scale(0.8);
+}
+
+.send-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  background: rgba(28, 28, 28, 0.9);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 50;
+}
+
+/* Desktop hover behavior */
+@media (hover: hover) and (pointer: fine) {
+  .send-button:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Mobile long press behavior */
+.send-button.mobile-tooltip-active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* TopTools container for responsive label hiding */
+.top-tools-container {
+  container-type: inline-size;
+}
+
+@container (max-width: 140px) {
+  .top-tools-container .btn-label {
+    display: none;
+  }
+}
+
+@container (max-width: 220px) {
+  .top-tools-container .btn-label {
+    display: none;
+  }
+}
+
+/* Mode Selector Dropdown Styles */
+.mode-selector-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.mode-selector-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  /* Prevent text selection on mobile */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Prevent touch callout on iOS */
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mode-selector-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.mode-dropdown-menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #090909;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  min-width: 80px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  overflow: hidden;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mode-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  /* Prevent text selection on mobile */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Prevent touch callout on iOS */
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mode-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.mode-dropdown-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mode-dropdown-item.active:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 1);
+}
